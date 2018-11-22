@@ -1,38 +1,37 @@
 // ************************************************************************** //
 //                                                                            //
 //                                                        :::      ::::::::   //
-//   Aircraft.java                                      :+:      :+:    :+:   //
+//   Helicopter.java                                    :+:      :+:    :+:   //
 //                                                    +:+ +:+         +:+     //
 //   By: wto <marvin@42.fr>                         +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
-//   Created: 2018/11/21 22:33:04 by wto               #+#    #+#             //
-//   Updated: 2018/11/21 22:33:04 by wto              ###   ########.fr       //
+//   Created: 2018/11/21 22:50:51 by wto               #+#    #+#             //
+//   Updated: 2018/11/21 22:50:51 by wto              ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
 package avaj_launcher.aircrafts;
 
-import avaj_launcher.simulator.Coordinates;
 import avaj_launcher.simulator.WeatherTower;
+import avaj_launcher.simulator.Coordinates;
 
-public abstract class Aircraft
+public class Helicopter extends Aircraft implements Flyable
 {
-	protected long id;
-	protected String name;
-	protected Coordinates coordinates;
-	protected WeatherTower weatherTower;
-
-	private static long idCounter = 0;
-
-	protected Aircraft(String name, Coordinates coordinates)
+	Helicopter(String name, Coordinates coordinates)
 	{
-		this.id = nextId();
-		this.name = name;
-		this.coordinates = coordinates;
+		super(name, coordinates);
 	}
 
-	private long nextId()
+	@Override
+	public void updateConditions()
 	{
-		return idCounter++;
+		String weather = this.weatherTower.getWeather(this.coordinates);
+	}
+
+	@Override
+	public void registerTower(WeatherTower weatherTower)
+	{
+		this.weatherTower = weatherTower;
+		this.weatherTower.register(this);
 	}
 }
