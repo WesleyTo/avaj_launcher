@@ -37,6 +37,6 @@ public class Coordinates
 
 	public int getHeight()
 	{
-		returh this.height;
+		return this.height;
 	}
 }
