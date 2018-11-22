@@ -1,3 +1,5 @@
 .DS_Store
 ._*
 *.class
+sources.txt
+/target
