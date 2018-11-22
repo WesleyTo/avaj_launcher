@@ -1,21 +1,21 @@
 // ************************************************************************** //
 //                                                                            //
 //                                                        :::      ::::::::   //
-//   Flyable.java                                       :+:      :+:    :+:   //
+//   ScenarioException.java                             :+:      :+:    :+:   //
 //                                                    +:+ +:+         +:+     //
 //   By: wto <marvin@42.fr>                         +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
-//   Created: 2018/11/21 19:09:50 by wto               #+#    #+#             //
-//   Updated: 2018/11/21 19:09:51 by wto              ###   ########.fr       //
+//   Created: 2018/11/21 21:13:37 by wto               #+#    #+#             //
+//   Updated: 2018/11/21 21:13:37 by wto              ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
-package avaj_launcher.aircrafts;
+package avaj_launcher.exceptions;
 
-import avaj_launcher.simulator.WeatherTower;
-
-public interface Flyable
+public class ScenarioException extends Exception
 {
-	void updateConditions();
-	void registerTower(WeatherTower weatherTower);
+	public ScenarioException(String message)
+	{
+		super(message);
+	}
 }

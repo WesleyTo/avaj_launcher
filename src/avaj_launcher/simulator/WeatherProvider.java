@@ -1,21 +1,36 @@
 // ************************************************************************** //
 //                                                                            //
 //                                                        :::      ::::::::   //
-//   Flyable.java                                       :+:      :+:    :+:   //
+//   WeatherProvider.java                               :+:      :+:    :+:   //
 //                                                    +:+ +:+         +:+     //
 //   By: wto <marvin@42.fr>                         +#+  +:+       +#+        //
 //                                                +#+#+#+#+#+   +#+           //
-//   Created: 2018/11/21 19:09:50 by wto               #+#    #+#             //
-//   Updated: 2018/11/21 19:09:51 by wto              ###   ########.fr       //
+//   Created: 2018/11/21 19:24:09 by wto               #+#    #+#             //
+//   Updated: 2018/11/21 19:24:10 by wto              ###   ########.fr       //
 //                                                                            //
 // ************************************************************************** //
 
-package avaj_launcher.aircrafts;
+package avaj_launcher.simulator;
 
-import avaj_launcher.simulator.WeatherTower;
-
-public interface Flyable
+public class WeatherProvider
 {
-	void updateConditions();
-	void registerTower(WeatherTower weatherTower);
+	private WeatherProvider weatherProvider;
+	private String[] weather;
+
+	private WeatherProvider()
+	{
+		// Do Nothing
+	}
+
+	public WeatherProvider getProvider()
+	{
+		if (weatherProvider == null)
+			weatherProvider = new WeatherProvider();
+		return weatherProvider;
+	}
+
+	public String getCurrentWeather(Coordinates coordinates)
+	{
+		return "";
+	}
 }
