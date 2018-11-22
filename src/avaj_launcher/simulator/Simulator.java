@@ -80,6 +80,7 @@ public class Simulator
 			{
 				String line;
 				int num_simulations;
+				Flyable craft;
 				if (args[0].isEmpty())
 				{
 					throw new FileNotFoundException("Filename cannot be blank");
@@ -87,11 +88,19 @@ public class Simulator
 				FileReader file = new FileReader(args[0]);
 				BufferedReader scenario = new BufferedReader(file);
 				line = scenario.readLine();
-				num_simulations = validateNumSimulations(line);
+				num_simulations = Simulator.validateNumSimulations(line);
 				while ((line = scenario.readLine()) != null)
 				{
 					String[] sim_args = line.split(" ");
 					Simulator.validateLine(sim_args, line_count);
+					craft = AircraftFactory.newAircraft(
+						sim_args[0],
+						sim_args[1],
+						Integer.parseInt(sim_args[2]),
+						Integer.parseInt(sim_args[3]),
+						Integer.parseInt(sim_args[4])
+					);
+					aircrafts.add(craft);
 					line_count++;
 				}
 			}
