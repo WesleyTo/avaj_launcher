@@ -25,35 +25,37 @@ public class Simulator
 {
 	private static HashSet<Flyable> aircrafts = new HashSet<Flyable>();
 
-	public static void validateLine(String[] sim_args, int line_count) throws ScenarioException
+	public static int validateNumSimulations(String line) throws ScenarioException
+	{
+		if (line != null)
+		{
+			String[] temp = line.split(" ");
+			if (temp.length != 1)
+			{
+				throw new ScenarioException(String.format("First line of scenario contains too many parameters (%d) instead of (1)", temp.length));
+			}
+			int num_simulations = Integer.parseInt(temp[0]);
+			if (num_simulations <= 0)
+			{
+				throw new ScenarioException(String.format("Scenario must contain a positive, non-zero number of simulations (got %d)", num_simulations));
+			}
+			return num_simulations;
+		}
+		else
+		{
+			throw new ScenarioException("Scenario file is empty");
+		}
+	}
+
+	public static void validateLine(String[] sim_args, int line_count) throws ScenarioException, NumberFormatException
 	{
 		if (sim_args.length != 5)
 		{
 			throw new ScenarioException(String.format("Line %d is malformed and contains %d parameters instead of 5", line_count, sim_args.length));
 		}
-		if (sim_args[0].isEmpty())
-		{
-			throw new ScenarioException(String.format("Line %d aircraft type is blank", line_count));
-		}
-		if (sim_args[1].isEmpty())
-		{
-			throw new ScenarioException(String.format("Line %d aircraft name is empty", line_count));
-		}
-		if (sim_args[2].isEmpty())
-		{
-			throw new ScenarioException(String.format("Line %d longitude is empty", line_count));
-		}
-		if (sim_args[3].isEmpty())
-		{
-			throw new ScenarioException(String.format("Line %d latitude is empty", line_count));
-		}
-		if (sim_args[4].isEmpty())
-		{
-			throw new ScenarioException(String.format("Line %d height is empty", line_count));
-		}
 		if (!AircraftFactory.aircrafts.contains(sim_args[0]))
 		{
-			throw new ScenarioException(String.format("Line %d aircraft type is unrecognized type %s", line_count, sim_args[0]));
+			throw new ScenarioException(String.format("Line %d aircraft type is unrecognized type '%s'", line_count, sim_args[0]));
 		}
 		if (Integer.parseInt(sim_args[2]) < 0)
 		{
@@ -73,10 +75,10 @@ public class Simulator
 	{
 		if (args.length == 1)
 		{
+			int line_count = 2;
 			try
 			{
 				String line;
-				int line_count = 1;
 				int num_simulations;
 				if (args[0].isEmpty())
 				{
@@ -85,14 +87,7 @@ public class Simulator
 				FileReader file = new FileReader(args[0]);
 				BufferedReader scenario = new BufferedReader(file);
 				line = scenario.readLine();
-				if (line != null)
-				{
-					num_simulations = Integer.parseInt(line.split(" ")[0]);
-					if (num_simulations <= 0)
-					{
-						throw new ScenarioException(String.format("Scenario must contain a positive, non-zero number of simulations (got %d)", num_simulations));
-					}
-				}
+				num_simulations = validateNumSimulations(line);
 				while ((line = scenario.readLine()) != null)
 				{
 					String[] sim_args = line.split(" ");
@@ -109,6 +104,10 @@ public class Simulator
 				System.out.println(e);
 			}
 			catch (IOException e)
+			{
+				System.out.println(e);
+			}
+			catch (NumberFormatException e)
 			{
 				System.out.println(e);
 			}
