@@ -11,7 +11,6 @@
 #******************************************************************************#
 
 NAME		=	Simulator
-SRC_NAMES	=	Simulator
 COMPILER	=	javac
 FLAGS		=	-sourcepath
 SRCFILE		=	sources.txt
@@ -23,7 +22,7 @@ OUTPUT		=	simulation.txt
 
 all:
 	find . -name *.java > $(SRCFILE)
-	$(COMPILER) -d . $(FLAGS) @$(SRCFILE) 
+	$(COMPILER) -d . $(FLAGS) @$(SRCFILE)
 
 clean:
 	$(RM) $(SRCFILE)
