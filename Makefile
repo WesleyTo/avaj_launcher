@@ -10,13 +10,12 @@
 #                                                                              #
 #******************************************************************************#
 
-NAME		=	Simulator
+NAME		=	avaj_launcher.simulator.Simulator
 COMPILER	=	javac
 FLAGS		=	-sourcepath
 SRCFILE		=	sources.txt
 RM			=	/bin/rm
 SCENARIO	=	scenario.txt
-EXEC		=	avaj_launcher.simulator.Simulator
 JAVA		=	java
 OUTPUT		=	simulation.txt
 
@@ -31,6 +30,6 @@ fclean: clean
 	$(RM) *.class
 
 run:
-	$(JAVA) $(EXEC) $(SCENARIO)
+	$(JAVA) $(NAME) $(SCENARIO)
 
 re: fclean all
