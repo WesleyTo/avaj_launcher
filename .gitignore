@@ -3,3 +3,5 @@
 *.class
 sources.txt
 /target
+*~
+.nfs*
