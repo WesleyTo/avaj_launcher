@@ -18,13 +18,14 @@ import avaj_launcher.exceptions.ScenarioException;
 import java.util.HashSet;
 import java.io.FileReader;
 import java.io.BufferedReader;
+import java.io.IOException;
 import java.io.FileNotFoundException;
 
 public class Simulator
 {
 	private static HashSet<Flyable> aircrafts = new HashSet<Flyable>();
 
-	public static void validateLine(String[] sim_args, int line_count)
+	public static void validateLine(String[] sim_args, int line_count) throws ScenarioException
 	{
 		if (sim_args.length != 5)
 		{
@@ -100,6 +101,14 @@ public class Simulator
 				}
 			}
 			catch (ScenarioException e)
+			{
+				System.out.println(e);
+			}
+			catch (FileNotFoundException e)
+			{
+				System.out.println(e);
+			}
+			catch (IOException e)
 			{
 				System.out.println(e);
 			}
