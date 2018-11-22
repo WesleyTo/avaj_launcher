@@ -17,6 +17,7 @@ SRCFILE		=	sources.txt
 RM			=	/bin/rm
 SCENARIO	=	scenario.txt
 JAVA		=	java
+OUTDIR		=	avaj_launcher
 OUTPUT		=	simulation.txt
 
 all:
@@ -27,7 +28,7 @@ clean:
 	$(RM) $(SRCFILE)
 
 fclean: clean
-	$(RM) *.class
+	$(RM) $(OUTDIR)/*/*.class
 
 run:
 	$(JAVA) $(NAME) $(SCENARIO)
