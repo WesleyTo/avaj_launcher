@@ -17,6 +17,7 @@ import java.util.HashSet;
 public abstract class Tower
 {
 	private HashSet<Flyable> observers = new HashSet<Flyable>();
+	private HashSet<Flyable> ignored = new HashSet<Flyable>();
 
 	public void register(Flyable flyable)
 	{
@@ -25,14 +26,26 @@ public abstract class Tower
 
 	public void unregister(Flyable flyable)
 	{
-		observers.remove(flyable);
+		ignored.add(flyable);
+	}
+
+	public int numObservers()
+	{
+		return observers.size();
 	}
 
 	protected void conditionsChanged()
 	{
 		for (Flyable craft : observers)
 		{
-			craft.updateConditions();
+			if (!ignored.contains(craft))
+			{
+				craft.updateConditions();
+			}
+		}
+		for (Flyable craft : ignored)
+		{
+			observers.remove(craft);
 		}
 	}
 }
