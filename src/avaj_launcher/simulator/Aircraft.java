@@ -10,12 +10,9 @@
 //                                                                            //
 // ************************************************************************** //
 
-package avaj_launcher.aircrafts;
+package avaj_launcher.simulator;
 
-import avaj_launcher.simulator.Coordinates;
-import avaj_launcher.simulator.WeatherTower;
-
-public abstract class Aircraft
+public class Aircraft
 {
 	protected long id;
 	protected String name;

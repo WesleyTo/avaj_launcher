@@ -10,10 +10,7 @@
 //                                                                            //
 // ************************************************************************** //
 
-package avaj_launcher.aircrafts;
-
-import avaj_launcher.simulator.WeatherTower;
-import avaj_launcher.simulator.Coordinates;
+package avaj_launcher.simulator;
 
 public class Baloon extends Aircraft implements Flyable
 {

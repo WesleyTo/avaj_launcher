@@ -12,7 +12,6 @@
 
 package avaj_launcher.simulator;
 
-import avaj_launcher.aircrafts.Flyable;
 import java.util.HashSet;
 
 public class Tower

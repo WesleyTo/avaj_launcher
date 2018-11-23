@@ -12,7 +12,6 @@
 
 package avaj_launcher.simulator;
 
-import avaj_launcher.aircrafts.AircraftFactory;
 import avaj_launcher.exceptions.ScenarioException;
 
 public class Validator

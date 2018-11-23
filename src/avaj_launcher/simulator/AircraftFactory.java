@@ -10,9 +10,8 @@
 //                                                                            //
 // ************************************************************************** //
 
-package avaj_launcher.aircrafts;
+package avaj_launcher.simulator;
 
-import avaj_launcher.simulator.Coordinates;
 import java.util.ArrayList;
 import java.util.Arrays;
 

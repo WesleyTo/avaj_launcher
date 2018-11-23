@@ -10,9 +10,7 @@
 //                                                                            //
 // ************************************************************************** //
 
-package avaj_launcher.aircrafts;
-
-import avaj_launcher.simulator.WeatherTower;
+package avaj_launcher.simulator;
 
 public interface Flyable
 {

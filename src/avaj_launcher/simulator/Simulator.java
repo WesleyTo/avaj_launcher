@@ -12,8 +12,6 @@
 
 package avaj_launcher.simulator;
 
-import avaj_launcher.aircrafts.Flyable;
-import avaj_launcher.aircrafts.AircraftFactory;
 import avaj_launcher.exceptions.ScenarioException;
 import java.util.HashSet;
 import java.io.FileReader;
