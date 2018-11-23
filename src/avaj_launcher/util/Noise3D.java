@@ -10,7 +10,7 @@
 //                                                                            //
 // ************************************************************************** //
 
-package avaj_launcher.simulator;
+package avaj_launcher.util;
 
 import java.util.Random;
 import java.lang.Math;
