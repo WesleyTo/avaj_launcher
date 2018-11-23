@@ -52,8 +52,8 @@ public class Baloon extends Aircraft implements Flyable
 		);
 		if (this.coordinates.getHeight() <= 0)
 		{
-			this.weatherTower.unregister(this);
 			this.land(WeatherProvider.getWeatherTypes()[i]);
+			this.weatherTower.unregister(this);
 		}
 		else
 		{
