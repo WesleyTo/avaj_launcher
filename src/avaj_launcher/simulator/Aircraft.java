@@ -13,7 +13,8 @@
 package avaj_launcher.simulator;
 
 import avaj_launcher.util.Logger;
-import java.io.IOException;
+import avaj_launcher.exceptions.LoggerException;
+import avaj_launcher.exceptions.ExceptionHandler;
 
 public abstract class Aircraft
 {
@@ -36,10 +37,9 @@ public abstract class Aircraft
 		{
 			log.write(msg);
 		}
-		catch (IOException e)
+		catch (LoggerException e)
 		{
-			System.out.println(e);
-			System.exit(1);
+			ExceptionHandler.exit(e);
 		}
 		System.out.println(msg);
 	}
@@ -54,10 +54,9 @@ public abstract class Aircraft
 		{
 			log.write(msg);
 		}
-		catch (IOException e)
+		catch (LoggerException e)
 		{
-			System.out.println(e);
-			System.exit(1);
+			ExceptionHandler.exit(e);
 		}
 		System.out.println(msg);
 	}

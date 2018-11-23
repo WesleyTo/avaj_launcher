@@ -12,6 +12,8 @@
 
 package avaj_launcher.util;
 
+import avaj_launcher.exceptions.LoggerException;
+import avaj_launcher.exceptions.ExceptionHandler;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -21,7 +23,7 @@ public class Logger
 	private static final String output = "simulation.txt";
 	private static FileWriter file;
 
-	private Logger()
+	private Logger() throws LoggerException
 	{
 		try
 		{
@@ -29,23 +31,29 @@ public class Logger
 		}
 		catch (IOException e)
 		{
-			System.out.println(e);
-			System.exit(1);
+			throw new LoggerException(String.format("Could not open file '%s' for logging", output));
 		}
 	}
 
 	public static Logger getLogger()
 	{
 		if (logger == null)
-			logger = new Logger();
+			try
+			{
+				logger = new Logger();
+			}
+			catch (LoggerException e)
+			{
+				ExceptionHandler.exit(e);
+			}
 		return logger;
 	}
 
-	public void write(String msg) throws IOException
+	public void write(String msg) throws LoggerException
 	{
 		if (file == null)
 		{
-			throw new IOException(String.format("File '%s' has already been closed for writing", output));
+			throw new LoggerException(String.format("File '%s' has already been closed for writing", output));
 		}
 		else
 		{
@@ -56,13 +64,12 @@ public class Logger
 			}
 			catch (IOException e)
 			{
-				System.out.println(e);
-				System.exit(1);
+				throw new LoggerException(String.format("Could not write to file '%s'", output));
 			}
 		}
 	}
 
-	public void close()
+	public void close() throws LoggerException
 	{
 		try
 		{
@@ -73,8 +80,7 @@ public class Logger
 		}
 		catch (IOException e)
 		{
-			System.out.println(e);
-			System.exit(1);
+			throw new LoggerException(String.format("Could not close log file '%s'", output));
 		}
 	}
 }

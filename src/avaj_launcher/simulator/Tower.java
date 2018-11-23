@@ -13,8 +13,9 @@
 package avaj_launcher.simulator;
 
 import avaj_launcher.util.Logger;
+import avaj_launcher.exceptions.LoggerException;
+import avaj_launcher.exceptions.ExceptionHandler;
 import java.util.HashSet;
-import java.io.IOException;
 
 public abstract class Tower
 {
@@ -34,10 +35,9 @@ public abstract class Tower
 		{
 			log.write(msg);
 		}
-		catch (IOException e)
+		catch (LoggerException e)
 		{
-			System.out.println(e);
-			System.exit(1);
+			ExceptionHandler.exit(e);
 		}
 	}
 
@@ -53,10 +53,9 @@ public abstract class Tower
 		{
 			log.write(msg);
 		}
-		catch (IOException e)
+		catch (LoggerException e)
 		{
-			System.out.println(e);
-			System.exit(1);
+			ExceptionHandler.exit(e);
 		}
 	}
 

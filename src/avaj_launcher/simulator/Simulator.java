@@ -13,6 +13,8 @@
 package avaj_launcher.simulator;
 
 import avaj_launcher.exceptions.ScenarioException;
+import avaj_launcher.exceptions.LoggerException;
+import avaj_launcher.exceptions.ExceptionHandler;
 import avaj_launcher.util.Logger;
 import java.util.HashSet;
 import java.io.FileReader;
@@ -71,19 +73,23 @@ public class Simulator
 			}
 			catch (ScenarioException e)
 			{
-				System.out.println(e);
+				ExceptionHandler.exit(e);
+			}
+			catch (LoggerException e)
+			{
+				ExceptionHandler.exit(e);
 			}
 			catch (FileNotFoundException e)
 			{
-				System.out.println(e);
+				ExceptionHandler.exit(e);
 			}
 			catch (IOException e)
 			{
-				System.out.println(e);
+				ExceptionHandler.exit(e);
 			}
 			catch (NumberFormatException e)
 			{
-				System.out.println(e);
+				ExceptionHandler.exit(e);
 			}
 		}
 		else
