@@ -18,8 +18,11 @@ import java.util.Arrays;
 
 public class AircraftFactory
 {
-	public static final ArrayList<String> aircrafts = new ArrayList<String>(
-      Arrays.asList("Baloon", "Helicopter", "JetPlane"));
+	public static ArrayList<String> aircrafts = new ArrayList<String>() {{
+      add("Baloon");
+      add("Helicopter");
+      add("JetPlane");
+	}};
 
 	public static Flyable newAircraft(String type, String name, int longitude, int latitude, int height)
 	{
