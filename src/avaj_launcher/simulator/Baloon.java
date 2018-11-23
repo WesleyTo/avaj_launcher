@@ -14,6 +14,8 @@ package avaj_launcher.simulator;
 
 public class Baloon extends Aircraft implements Flyable
 {
+	private WeatherTower weatherTower;
+	
 	Baloon(String name, Coordinates coordinates)
 	{
 		super(name, coordinates);
