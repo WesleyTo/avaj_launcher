@@ -14,6 +14,6 @@ package avaj_launcher.simulator;
 
 public interface Flyable
 {
-	void updateConditions();
-	void registerTower(WeatherTower weatherTower);
+	public void updateConditions();
+	public void registerTower(WeatherTower weatherTower);
 }
