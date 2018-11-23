@@ -14,15 +14,15 @@ package avaj_launcher.simulator;
 
 public class WeatherProvider
 {
-	private WeatherProvider weatherProvider;
-	private String[] weather;
+	private static WeatherProvider weatherProvider;
+	private static String[] weather = {};
 
 	private WeatherProvider()
 	{
 		// Do Nothing
 	}
 
-	public WeatherProvider getProvider()
+	public static WeatherProvider getProvider()
 	{
 		if (weatherProvider == null)
 			weatherProvider = new WeatherProvider();
