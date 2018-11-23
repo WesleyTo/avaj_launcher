@@ -12,6 +12,9 @@
 
 package avaj_launcher.simulator;
 
+import avaj_launcher.util.Logger;
+import java.io.IOException;
+
 public abstract class Aircraft
 {
 	protected String type;
@@ -19,10 +22,12 @@ public abstract class Aircraft
 	protected String name;
 	protected Coordinates coordinates;
 
+	private static Logger log = Logger.getLogger();
 	private static long idCounter = 0;
 
 	protected void log(String s)
 	{
+		
 		String msg = String.format(
 			"%s#%s(%d) %s %s",
 			this.type,
@@ -31,6 +36,15 @@ public abstract class Aircraft
 			this.coordinates.toString(),
 			s
 		);
+		try
+		{
+			log.write(msg);
+		}
+		catch (IOException e)
+		{
+			System.out.println(e);
+			System.exit(1);
+		}
 		System.out.println(msg);
 	}
 
@@ -44,6 +58,15 @@ public abstract class Aircraft
 			this.id,
 			s
 		);
+		try
+		{
+			log.write(msg);
+		}
+		catch (IOException e)
+		{
+			System.out.println(e);
+			System.exit(1);
+		}
 		System.out.println(msg);
 	}
 
