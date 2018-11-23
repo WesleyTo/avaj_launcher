@@ -27,9 +27,8 @@ public abstract class Aircraft
 
 	protected void log(String s)
 	{
-		
 		String msg = String.format(
-			"%s#%s(%d) %s %s",
+			"%s#%s(%d): %s %s",
 			this.type,
 			this.name,
 			this.id,
@@ -50,9 +49,8 @@ public abstract class Aircraft
 
 	protected void land(String s)
 	{
-
 		String msg = String.format(
-			"%s#%s(%d) %s caused the craft to land",
+			"%s#%s(%d): %s caused the craft to land",
 			this.type,
 			this.name,
 			this.id,
