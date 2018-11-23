@@ -15,7 +15,7 @@ package avaj_launcher.simulator;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class AircraftFactory
+public abstract class AircraftFactory
 {
 	public static ArrayList<String> aircrafts = new ArrayList<String>() {{
       add("Baloon");
