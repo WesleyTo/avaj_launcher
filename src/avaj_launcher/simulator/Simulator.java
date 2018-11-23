@@ -13,17 +13,12 @@
 package avaj_launcher.simulator;
 
 import avaj_launcher.exceptions.ScenarioException;
+import avaj_launcher.util.Logger;
 import java.util.HashSet;
 import java.io.FileReader;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.FileNotFoundException;
-
-
-
-import java.util.Random;
-
-
 
 public class Simulator
 {
@@ -72,6 +67,7 @@ public class Simulator
 					}
 					tower.conditionsChanged();
 				}
+				Logger.getLogger().close();
 			}
 			catch (ScenarioException e)
 			{
