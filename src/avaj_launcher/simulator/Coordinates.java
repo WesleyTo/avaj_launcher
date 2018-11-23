@@ -39,4 +39,9 @@ public class Coordinates
 	{
 		return this.height;
 	}
+
+	public String toString()
+	{
+		return String.format("(%d, %d, %d)", longitude, latitude, height);
+	}
 }
