@@ -17,10 +17,13 @@ import java.util.Arrays;
 
 public abstract class AircraftFactory
 {
-	public static ArrayList<String> aircrafts = new ArrayList<String>() {{
-      add("Baloon");
-      add("Helicopter");
-      add("JetPlane");
+	private static final String baloon = "Baloon";
+	private static final String heli = "Helicopter";
+	private static final String jet = "JetPlane";
+	public static final ArrayList<String> aircrafts = new ArrayList<String>() {{
+      add(baloon);
+      add(heli);
+      add(jet);
 	}};
 
 	public static Flyable newAircraft(String type, String name, int longitude, int latitude, int height)
@@ -29,13 +32,13 @@ public abstract class AircraftFactory
 		Flyable craft = null;
 		switch(type)
 		{
-			case "Baloon":
+			case baloon:
 				craft = new Baloon(name, c);
 				break;
-			case "Helicopter":
+			case heli:
 				craft = new Helicopter(name, c);
 				break;
-			case "JetPlane":
+			case jet:
 				craft = new JetPlane(name, c);
 				break;
 		}
