@@ -17,7 +17,6 @@ public abstract class Aircraft
 	protected long id;
 	protected String name;
 	protected Coordinates coordinates;
-	protected WeatherTower weatherTower;
 
 	private static long idCounter = 0;
 
