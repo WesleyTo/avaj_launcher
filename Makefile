@@ -15,7 +15,7 @@ OUTDIR		=	./avaj_launcher
 OUTPUT		=	simulation.txt
 COMPILER	=	javac
 FLAGS		=	-sourcepath
-V7FLAGS		=	-source 7 -target 7 -classpath
+V7FLAGS		=	-source 7 -target 7
 SRCFILE		=	sources.txt
 RM			=	/bin/rm
 RMFLAGS		=	-rf
@@ -28,7 +28,10 @@ endif
 
 all:
 	find . -name *.java > $(SRCFILE)
-	#$(COMPILER) -d . $(FLAGS) @$(SRCFILE)
+	$(COMPILER) -d . $(FLAGS) @$(SRCFILE)
+
+v7:
+	find . -name *.java > $(SRCFILE)
 	$(COMPILER) -d . $(V7FLAGS) $(FLAGS) @$(SRCFILE)
 
 clean:
