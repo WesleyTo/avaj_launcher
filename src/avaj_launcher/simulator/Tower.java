@@ -14,7 +14,7 @@ package avaj_launcher.simulator;
 
 import java.util.HashSet;
 
-public class Tower
+public abstract class Tower
 {
 	private HashSet<Flyable> observers = new HashSet<Flyable>();
 
