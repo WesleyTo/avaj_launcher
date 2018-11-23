@@ -28,12 +28,9 @@ public abstract class Aircraft
 	protected void log(String s)
 	{
 		String msg = String.format(
-			"%s#%s(%d): %s %s",
-			this.type,
-			this.name,
-			this.id,
-			this.coordinates.toString(),
-			s
+			"%s: %s %s",
+			this.toString(),
+			this.coordinates.toString(), s
 		);
 		try
 		{
@@ -50,11 +47,8 @@ public abstract class Aircraft
 	protected void land(String s)
 	{
 		String msg = String.format(
-			"%s#%s(%d): %s caused the craft to land",
-			this.type,
-			this.name,
-			this.id,
-			s
+			"%s: %s caused the craft to land",
+			this.toString(), s
 		);
 		try
 		{
@@ -78,5 +72,15 @@ public abstract class Aircraft
 	private long nextId()
 	{
 		return idCounter++;
+	}
+
+	public String toString()
+	{
+		return String.format(
+			"%s#%s(%d)",
+			this.type,
+			this.name,
+			this.id
+		);
 	}
 }
