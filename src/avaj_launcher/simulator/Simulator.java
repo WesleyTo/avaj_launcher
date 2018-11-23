@@ -19,6 +19,12 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.FileNotFoundException;
 
+
+
+import java.util.Random;
+
+
+
 public class Simulator
 {
 	private static HashSet<Flyable> aircrafts = new HashSet<Flyable>();
@@ -32,6 +38,7 @@ public class Simulator
 			{
 				String line;
 				int num_simulations;
+				WeatherTower tower = new WeatherTower();
 				Flyable craft;
 				if (args[0].isEmpty())
 				{
@@ -53,7 +60,17 @@ public class Simulator
 						Integer.parseInt(sim_args[4])
 					);
 					aircrafts.add(craft);
+					craft.registerTower(tower);
 					line_count++;
+				}
+				for (int i = 0; i < num_simulations; i++)
+				{
+					if (tower.numObservers() == 0)
+					{
+						System.out.println("ALL CRAFTS LANDED");
+						break;
+					}
+					tower.conditionsChanged();
 				}
 			}
 			catch (ScenarioException e)
