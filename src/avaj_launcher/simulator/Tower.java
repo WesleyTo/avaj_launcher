@@ -18,14 +18,14 @@ public class Tower
 {
 	private HashSet<Flyable> observers = new HashSet<Flyable>();
 
-	public void register(Flyable craft)
+	public void register(Flyable flyable)
 	{
-		observers.add(craft);
+		observers.add(flyable);
 	}
 
-	public void unregister(Flyable craft)
+	public void unregister(Flyable flyable)
 	{
-		observers.remove(craft);
+		observers.remove(flyable);
 	}
 
 	protected void conditionsChanged()
