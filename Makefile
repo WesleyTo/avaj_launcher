@@ -11,24 +11,31 @@
 #******************************************************************************#
 
 NAME		=	avaj_launcher.simulator.Simulator
+OUTDIR		=	./avaj_launcher
+OUTPUT		=	simulation.txt
 COMPILER	=	javac
 FLAGS		=	-sourcepath
+V7FLAGS		=	-source 7 -target 7 -classpath
 SRCFILE		=	sources.txt
 RM			=	/bin/rm
+RMFLAGS		=	-rf
 SCENARIO	=	scenario.txt
 JAVA		=	java
-OUTDIR		=	avaj_launcher
-OUTPUT		=	simulation.txt
+
+ifndef VERBOSE
+.SILENT:
+endif
 
 all:
 	find . -name *.java > $(SRCFILE)
-	$(COMPILER) -d . $(FLAGS) @$(SRCFILE)
+	#$(COMPILER) -d . $(FLAGS) @$(SRCFILE)
+	$(COMPILER) -d . $(V7FLAGS) $(FLAGS) @$(SRCFILE)
 
 clean:
-	$(RM) $(SRCFILE)
+	$(RM) $(RMFLAGS) $(SRCFILE)
 
 fclean: clean
-	$(RM) $(OUTDIR)/*/*.class
+	$(RM) $(RMFLAGS) $(OUTDIR)
 
 run:
 	$(JAVA) $(NAME) $(SCENARIO)
