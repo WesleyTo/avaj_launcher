@@ -12,6 +12,8 @@
 
 package avaj_launcher.simulator;
 
+import avaj_launcher.util.Noise3D;
+
 public class WeatherProvider
 {
 	private static WeatherProvider weatherProvider;
