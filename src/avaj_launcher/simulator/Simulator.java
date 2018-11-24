@@ -16,6 +16,7 @@ import avaj_launcher.exceptions.ScenarioException;
 import avaj_launcher.exceptions.LoggerException;
 import avaj_launcher.exceptions.ExceptionHandler;
 import avaj_launcher.util.Logger;
+import avaj_launcher.util.Validator;
 import java.util.HashSet;
 import java.io.FileReader;
 import java.io.BufferedReader;
@@ -59,8 +60,11 @@ public class Simulator
 						Integer.parseInt(sim_args[4])
 					);
 					aircrafts.add(craft);
-					craft.registerTower(tower);
 					line_count++;
+				}
+				for (Flyable aircraft : aircrafts)
+				{
+					aircraft.registerTower(tower);
 				}
 				for (int i = 0; i < num_simulations; i++)
 				{
