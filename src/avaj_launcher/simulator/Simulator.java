@@ -39,7 +39,7 @@ public class Simulator
 				WeatherTower tower = new WeatherTower();
 				Flyable craft;
 				Logger log = Logger.getLogger();
-				
+
 				log.setStdOut(true);
 				Validator.validateFileName(args[0]);
 				FileReader file = new FileReader(args[0]);
@@ -55,7 +55,7 @@ public class Simulator
 						sim_args[1],
 						Integer.parseInt(sim_args[2]),
 						Integer.parseInt(sim_args[3]),
-						Integer.parseInt(sim_args[4])
+						Aircraft.clampHeight(Integer.parseInt(sim_args[4]))
 					);
 					aircrafts.add(craft);
 					line_count++;
