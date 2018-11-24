@@ -37,6 +37,8 @@ public class Simulator
 				int num_simulations;
 				WeatherTower tower = new WeatherTower();
 				Flyable craft;
+				Logger log = Logger.getLogger();
+				log.setStdOut(true);
 				if (args[0].isEmpty())
 				{
 					throw new FileNotFoundException("Filename cannot be blank");
@@ -62,14 +64,15 @@ public class Simulator
 				}
 				for (int i = 0; i < num_simulations; i++)
 				{
+					log.writeLn();
 					if (tower.numObservers() == 0)
 					{
-						System.out.println("ALL CRAFTS LANDED");
+						log.write("ALL CRAFTS LANDED");
 						break;
 					}
 					tower.conditionsChanged();
 				}
-				Logger.getLogger().close();
+				log.close();
 			}
 			catch (ScenarioException e)
 			{
