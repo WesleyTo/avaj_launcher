@@ -22,6 +22,7 @@ public class Logger
 	private static Logger logger;
 	private static final String output = "simulation.txt";
 	private static FileWriter file;
+	private boolean stdOut = false;
 
 	private Logger() throws LoggerException
 	{
@@ -61,12 +62,21 @@ public class Logger
 			{
 				file.write(msg);
 				file.write(System.lineSeparator());
+				if (stdOut)
+				{
+					System.out.println(msg);
+				}
 			}
 			catch (IOException e)
 			{
 				throw new LoggerException(String.format("Could not write to file '%s'", output));
 			}
 		}
+	}
+
+	public void writeLn() throws LoggerException
+	{
+		this.write("");
 	}
 
 	public void close() throws LoggerException
@@ -82,5 +92,10 @@ public class Logger
 		{
 			throw new LoggerException(String.format("Could not close log file '%s'", output));
 		}
+	}
+
+	public void setStdOut(boolean b)
+	{
+		this.stdOut = b;
 	}
 }
