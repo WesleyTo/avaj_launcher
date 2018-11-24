@@ -36,7 +36,7 @@ source:
 	find . -name *.java >> $(SRCFILE)
 
 clean:
-	$(RM) $(RMFLAGS) $(SRCFILE)
+	$(RM) $(RMFLAGS) $(SRCFILE) $(OUTPUT)
 
 fclean: clean
 	$(RM) $(RMFLAGS) $(OUTDIR)
