@@ -22,7 +22,7 @@ RMFLAGS		=	-rf
 
 SRCFILE		=	sources.txt
 OUTPUT		=	simulation.txt
-SCENARIO	=	scenario.txt
+INPUT		=	scenario.txt
 
 ifndef VERBOSE
 .SILENT:
@@ -42,6 +42,6 @@ fclean: clean
 	$(RM) $(RMFLAGS) $(OUTDIR)
 
 run:
-	$(JAVA) $(NAME) $(SCENARIO)
+	$(JAVA) $(NAME) $(INPUT)
 
 re: fclean all
