@@ -75,13 +75,13 @@ public class Validator
 		{
 			throw new ScenarioException(String.format("Line %d aircraft name is blank", line_count));
 		}
-		if (Integer.parseInt(sim_args[2]) < 0)
+		if (Integer.parseInt(sim_args[2]) <= 0)
 		{
-			throw new ScenarioException(String.format("Line %d longitude is negative", line_count));
+			throw new ScenarioException(String.format("Line %d longitude is non-positive", line_count));
 		}
-		if (Integer.parseInt(sim_args[3]) < 0)
+		if (Integer.parseInt(sim_args[3]) <= 0)
 		{
-			throw new ScenarioException(String.format("Line %d latitude is negative", line_count));
+			throw new ScenarioException(String.format("Line %d latitude is non-positive", line_count));
 		}
 		if (Integer.parseInt(sim_args[4]) < 0)
 		{
