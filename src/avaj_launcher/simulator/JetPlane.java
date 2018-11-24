@@ -21,6 +21,13 @@ public class JetPlane extends Aircraft implements Flyable
 		{0, 5, 0},
 		{0, 0, -7}
 	};
+	private static final String[] msgs = {
+		"Beautiful weather for jetsetting.",
+		"Can't see, good thing we have radar.",
+		"It's OK. We're not some dumb 'baloon.'",
+		"Better initiate a controlled descent.",
+		"We've landed safely, ladies and gents."
+	};
 	
 	JetPlane(String name, Coordinates coordinates)
 	{
@@ -32,18 +39,14 @@ public class JetPlane extends Aircraft implements Flyable
 	public void updateConditions()
 	{
 		String weather = this.weatherTower.getWeather(this.coordinates);
-		int i = 3;
-		if (weather == WeatherProvider.sun)
+		String[] weathers = WeatherProvider.getWeatherTypes();
+		int i = 0;
+		for (i = 0; i < weathers.length; i++)
 		{
-			i = 0;
-		}
-		else if (weather == WeatherProvider.fog)
-		{
-			i = 1;
-		}
-		else if (weather == WeatherProvider.rain)
-		{
-			i = 2;
+			if (weather == weathers[i])
+			{
+				break;
+			}
 		}
 		this.coordinates = new Coordinates(
 			this.coordinates.getLongitude() + update[i][0],
@@ -52,12 +55,12 @@ public class JetPlane extends Aircraft implements Flyable
 		);
 		if (this.coordinates.getHeight() <= 0)
 		{
-			this.land(WeatherProvider.getWeatherTypes()[i]);
+			this.land(weathers[i], msgs[4]);
 			this.weatherTower.unregister(this);
 		}
 		else
 		{
-			this.log(WeatherProvider.getWeatherTypes()[i]);
+			this.log(weathers[i], msgs[i]);
 		}
 	}
 

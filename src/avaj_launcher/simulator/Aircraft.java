@@ -26,30 +26,18 @@ public abstract class Aircraft
 	private static Logger log = Logger.getLogger();
 	private static long idCounter = 0;
 
-	protected void log(String s)
+	private String makeMsg(String weather, String s)
 	{
-		String msg = String.format(
-			"%s: %s %s",
+		return String.format(
+			"%s: %s [%s] %s",
 			this.toString(),
-			this.coordinates.toString(), s
+			this.coordinates.toString(), weather, s
 		);
-		try
-		{
-			log.write(msg);
-		}
-		catch (LoggerException e)
-		{
-			ExceptionHandler.exit(e);
-		}
-		System.out.println(msg);
 	}
 
-	protected void land(String s)
+	protected void log(String weather, String s)
 	{
-		String msg = String.format(
-			"%s: %s caused the craft to land",
-			this.toString(), s
-		);
+		String msg = this.makeMsg(weather, s);
 		try
 		{
 			log.write(msg);
@@ -58,7 +46,19 @@ public abstract class Aircraft
 		{
 			ExceptionHandler.exit(e);
 		}
-		System.out.println(msg);
+	}
+
+	protected void land(String weather, String s)
+	{
+		String msg = this.makeMsg(weather, s);
+		try
+		{
+			log.write(msg);
+		}
+		catch (LoggerException e)
+		{
+			ExceptionHandler.exit(e);
+		}
 	}
 
 	protected Aircraft(String name, Coordinates coordinates)

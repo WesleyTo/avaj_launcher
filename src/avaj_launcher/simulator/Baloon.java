@@ -21,6 +21,13 @@ public class Baloon extends Aircraft implements Flyable
 		{0, 0, -2},
 		{0, 0, -15}
 	};
+	private static final String[] msgs = {
+		"This is nice 'balooning' weather...",
+		"Visibility is a bit low, better descend.",
+		"We'll need to land if this rain keeps up.",
+		"It's too cold, we need to go down!",
+		"We're crashing! Damn this off-brand 'baloon'!"
+	};
 	
 	Baloon(String name, Coordinates coordinates)
 	{
@@ -32,18 +39,14 @@ public class Baloon extends Aircraft implements Flyable
 	public void updateConditions()
 	{
 		String weather = this.weatherTower.getWeather(this.coordinates);
-		int i = 3;
-		if (weather == WeatherProvider.sun)
+		String[] weathers = WeatherProvider.getWeatherTypes();
+		int i = 0;
+		for (i = 0; i < weathers.length; i++)
 		{
-			i = 0;
-		}
-		else if (weather == WeatherProvider.fog)
-		{
-			i = 1;
-		}
-		else if (weather == WeatherProvider.rain)
-		{
-			i = 2;
+			if (weather == weathers[i])
+			{
+				break;
+			}
 		}
 		this.coordinates = new Coordinates(
 			this.coordinates.getLongitude() + update[i][0],
@@ -52,12 +55,12 @@ public class Baloon extends Aircraft implements Flyable
 		);
 		if (this.coordinates.getHeight() <= 0)
 		{
-			this.land(WeatherProvider.getWeatherTypes()[i]);
+			this.land(weathers[i], msgs[4]);
 			this.weatherTower.unregister(this);
 		}
 		else
 		{
-			this.log(WeatherProvider.getWeatherTypes()[i]);
+			this.log(weathers[i], msgs[i]);
 		}
 	}
 
