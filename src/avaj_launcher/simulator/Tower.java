@@ -30,7 +30,6 @@ public abstract class Tower
 			"Tower says: %s registered",
 			flyable.toString()
 		);
-		System.out.println(msg);
 		try
 		{
 			log.write(msg);
@@ -48,7 +47,6 @@ public abstract class Tower
 			"Tower says: %s unregistered",
 			flyable.toString()
 		);
-		System.out.println(msg);
 		try
 		{
 			log.write(msg);
