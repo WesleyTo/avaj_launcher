@@ -82,4 +82,17 @@ public abstract class Aircraft
 			this.id
 		);
 	}
+
+	public static int clampHeight(int height)
+	{
+		if (height > 100)
+		{
+			return 100;
+		}
+		if (height < 0)
+		{
+			return 0;
+		}
+		return height;
+	}
 }
