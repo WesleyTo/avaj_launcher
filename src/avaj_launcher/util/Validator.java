@@ -16,6 +16,7 @@ import avaj_launcher.simulator.AircraftFactory;
 import avaj_launcher.exceptions.ExceptionHandler;
 import avaj_launcher.exceptions.ScenarioException;
 import java.lang.StringBuffer;
+import java.io.FileNotFoundException;
 
 public class Validator
 {
@@ -38,6 +39,14 @@ public class Validator
 		else
 		{
 			throw new ScenarioException("Scenario file is empty");
+		}
+	}
+
+	public static void validateFileName(String file) throws FileNotFoundException
+	{
+		if (file.isEmpty())
+		{
+			throw new FileNotFoundException("Filename cannot be blank");
 		}
 	}
 

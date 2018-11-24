@@ -39,11 +39,9 @@ public class Simulator
 				WeatherTower tower = new WeatherTower();
 				Flyable craft;
 				Logger log = Logger.getLogger();
+				
 				log.setStdOut(true);
-				if (args[0].isEmpty())
-				{
-					throw new FileNotFoundException("Filename cannot be blank");
-				}
+				Validator.validateFileName(args[0]);
 				FileReader file = new FileReader(args[0]);
 				BufferedReader scenario = new BufferedReader(file);
 				line = scenario.readLine();
