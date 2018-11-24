@@ -10,9 +10,12 @@
 //                                                                            //
 // ************************************************************************** //
 
-package avaj_launcher.simulator;
+package avaj_launcher.util;
 
+import avaj_launcher.simulator.AircraftFactory;
+import avaj_launcher.exceptions.ExceptionHandler;
 import avaj_launcher.exceptions.ScenarioException;
+import java.lang.StringBuffer;
 
 public class Validator
 {
@@ -42,11 +45,26 @@ public class Validator
 	{
 		if (sim_args.length != 5)
 		{
-			throw new ScenarioException(String.format("Line %d is malformed and contains %d parameters instead of 5", line_count, sim_args.length));
+			StringBuffer buf = new StringBuffer();
+			buf.append("[");
+			for (int i = 0; i < sim_args.length; i++)
+			{
+				buf.append(String.format("\"%s\"%s", sim_args[i], i + 1 == sim_args.length ? "" : ", "));
+			}
+			buf.append("]");
+			throw new ScenarioException(String.format("Line %d is malformed and contains %d parameters instead of 5: %s", line_count, sim_args.length, buf.toString()));
 		}
 		if (!AircraftFactory.aircrafts.contains(sim_args[0]))
 		{
 			throw new ScenarioException(String.format("Line %d aircraft type is unrecognized type '%s'", line_count, sim_args[0]));
+		}
+		if (sim_args[0].isEmpty())
+		{
+			throw new ScenarioException(String.format("Line %d aircraft type is blank", line_count));
+		}
+		if (sim_args[1].isEmpty())
+		{
+			throw new ScenarioException(String.format("Line %d aircraft name is blank", line_count));
 		}
 		if (Integer.parseInt(sim_args[2]) < 0)
 		{
